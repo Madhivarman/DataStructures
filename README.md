@@ -1,2 +1,1 @@
-This Repository contains Graph Algorithms, Searching and Sorting, Dynamic Programming Algorithms purely implemented in Python.
-Code is coded for learning purpose and problem solving methods
+This Repository will be updated regularly as leetcode problems are solved.  Contains Algorithms, Data Structures methods purely implemented in Python
