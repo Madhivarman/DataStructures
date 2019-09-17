@@ -5,50 +5,64 @@ class Node:
     def __init__(self, value):
         self.data = value
         self.next = None
+        
     
+def printNodeList(self, asList):
+        temp = asList[0] #root node
+        l = []
+        while(temp != None):
+            l.append(temp.val)
+            temp = temp.next
 
+        print(l)
 
 def printNodeList(asList):
-    temp = asList[0] #root node
-    l = []
-    while(temp != None):
-        l.append(temp.data)
-        temp = temp.next
-
-    print(l)
-
-#function to get the nth node from linked list
-def getNthNodeFromLinkedList(rootNode, k):
-    #get the length of the linked list
-    N = 1
-    temp = rootNode
-
-    #get the nth Node
-    while(temp.next != None):
-        N += 1
-        temp =  temp.next
-    
-    #Index of the node to remove
-    nthElement = N - k
-    indexStart = 1 #start position
-
-    previousNode = rootNode
-    currentNode = rootNode
-    addingNode = []
-    addingNode.append(previousNode)
-
-    while(indexStart < N):
-        #update the current node as previous node
-        previousNode = currentNode
-        currentNode = currentNode.next
-
-        addingNode.append(currentNode)
+        temp = asList[0] #root node
+        l = []
         
-        #if condition mets then break
-        if indexStart == nthElement:
-            previousNode.next = currentNode.next
+        while(temp != None):
+            l.append(temp.data)
+            temp = temp.next
 
-        indexStart += 1
+         #get the length of the linked list
+        N = 1
+        temp = rootNode
+
+        #get the nth Node
+        while(temp.next != None):
+            N += 1
+            temp =  temp.next
+        
+        
+        if N < k:
+            return rootNode
+
+        #Index of the node to remove
+        nthElement = N - k
+        indexStart = 1 #start position
+        
+        if nthElement == 0:
+            rootNode = rootNode.next
+            return rootNode
+
+        previousNode = rootNode
+        currentNode = rootNode
+        addingNode = []
+        addingNode.append(previousNode)
+
+        while(indexStart < N):
+            #update the current node as previous node
+            previousNode = currentNode
+            currentNode = currentNode.next
+
+            addingNode.append(currentNode)
+
+            #if condition mets then break
+            if indexStart == nthElement:
+                previousNode.next = currentNode.next
+                return rootNode
+
+            indexStart += 1
 
     printNodeList(addingNode)
 
