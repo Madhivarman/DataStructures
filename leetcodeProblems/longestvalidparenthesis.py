@@ -22,6 +22,7 @@ def longestParenthesis(string):
             else:
                 stack.pop()
                 if stack:
+                    #update counter with maximum value
                     counter = max(counter, num-stack[-1])
                 else:
                     stack.append(num)
