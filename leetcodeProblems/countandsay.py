@@ -1,7 +1,7 @@
 def countAndSay(self, n: int) -> str:
         if n <= 1:
             return "1"
-        prevCountAndSay = self.countAndSay(n - 1)
+        prevCountAndSay = countAndSay(n - 1)
         last = None
         occurrence = None
         output = ""
