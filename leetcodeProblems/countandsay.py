@@ -1,4 +1,4 @@
-def countAndSay(self, n: int) -> str:
+def countAndSay(n):
         if n <= 1:
             return "1"
         prevCountAndSay = countAndSay(n - 1)
