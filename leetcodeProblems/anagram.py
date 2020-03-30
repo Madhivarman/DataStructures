@@ -4,7 +4,7 @@ class Solution():
         anagram_words = {}
 
         for words in wordlists:
-            aftersort = ''.join(sorted(list(set(words))))
+            aftersort = ''.join(sorted(list(words)))
             if aftersort not in anagram_words.keys():
                 anagram_words[aftersort] = []
                 #anagram_words[aftersort].append(words)
