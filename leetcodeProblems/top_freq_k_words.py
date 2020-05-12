@@ -8,6 +8,7 @@ class Solution:
     def topKFrequent(self, words, k):
         hashmap = {}
         
+        #O(n)
         for word in words:
             if word in hashmap: 
                 hashmap[word] += 1
@@ -19,7 +20,8 @@ class Solution:
         sort = sorted([ (-hashmap[word], word) for word in hashmap ])
         res = []
         
-        for freq, val in sort[:k]:
+        #O(log n)
+        for freq, val in sort[:k]: 
             res.append(val)
         
         return res
