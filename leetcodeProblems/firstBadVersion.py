@@ -56,4 +56,4 @@ class Solution:
 
 
 #print(Solution(100000).firstBadVersion(100000)) #0.24s
-print(Solution(1000).OptimalSolution(1000)) #0.11s
+print(Solution(100000).OptimalSolution(100000)) #0.11s
