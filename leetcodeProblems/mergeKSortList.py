@@ -7,46 +7,33 @@ class Node():
         self.data = val
         self.next = None
     
-def printLinkedList(ll):
-    temp = ll
-    ans = []
-    while temp:
-        ans.append(temp.data)
-        temp = temp.next
-    
-    print(ans)
-        
-
-def mergeKSortedLinkedList(linkedListInList):
-    #instead of traversing throughe each element
-    #we can simply use Dictionary
-    head = Node(0)
-    temp = head
-    dictionary = dict()
-
-    if len(linkedListInList) == 0:
-        return head.next
-    
-    #iterate through the dictionary keys
-    for node in linkedListInList:
-        while node:
-            if node.data not in dictionary:
-                dictionary[node.data] = [node]
-            else:
-                dictionary[node.data].append(node)
-            #update the node
-            node = node.next
-    
-    keys = list(dictionary.keys())
-    keys = sorted(keys) #sorted the keys
-
-    for key in keys:
-        for node in dictionary.get(key):
-            temp.next = node
-            temp = temp.next
-    
-
-    return head.next
+class Solution:
+    def mergeKLists(self, linkedListInList: List[ListNode]) -> ListNode:
+            
+            #instead of traversing throughe each element
+            #we can simply use Dictionary
+            head = ListNode(0)
+            temp = head
+            result = []
+            
+            if len(linkedListInList) == 0:
+                return head.next
+            
+            for ll in linkedListInList:
+                n = ll
+                while n:
+                    result.append(n.val)
+                    n = n.next
+            
+            st = sorted(result)
+            
+            #print(st)
+            
+            for r in st:
+                temp.next = ListNode(r)
+                temp = temp.next
+            
+            return head.next
 
 
 """
@@ -81,6 +68,6 @@ if __name__ == "__main__":
 
     #connect on linkedList
     asList = [l1, l2, l3]
-    solution = mergeKSortedLinkedList(asList)
+    solution = Solution().mergeKSortedLinkedList(asList)
 
     printLinkedList(solution)
