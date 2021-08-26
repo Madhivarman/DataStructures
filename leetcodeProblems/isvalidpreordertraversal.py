@@ -1,0 +1,35 @@
+"""
+	Problem Statement:
+		One way to serialize a binary tree is to use preorder traversal. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as '#'.
+		For example, the above binary tree can be serialized to the string "9,3,4,#,#,1,#,#,2,#,6,#,#", where '#' represents a null node.
+
+		Given a string of comma-separated values preorder, return true if it is a correct preorder traversal serialization of a binary tree.
+
+		It is guaranteed that each comma-separated value in the string must be either an integer or a character '#' representing null pointer.
+
+		You may assume that the input format is always valid.
+
+		For example, it could never contain two consecutive commas, such as "1,,3".
+		Note: You are not allowed to reconstruct the tree.
+"""
+
+class Solution():
+	def isValidPreorderTraversal(self, s:str):
+		aslists = s.split(",")
+		stack = []
+
+		#if 2 "null" is followed simultaneously, then we have achieved leaf, and remove the element from stack
+
+		for num in aslists:
+			stack.append(num)
+			while len(stack) > 2 and stack[-2:] == ["#"]*2 and stack[-3] != '#':
+				stack.pop(-3)
+				stack.pop(-2)
+
+		return stack == ["#"]
+
+tc1 = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+tc2 = "9,#,#,1"
+
+print(Solution().isValidPreorderTraversal(tc1)) #true
+print(Solution().isValidPreorderTraversal(tc2)) #false
